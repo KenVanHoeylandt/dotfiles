@@ -1,0 +1,13 @@
+[user]
+	name = Ken Van Hoeylandt
+	email = 
+[color]
+	ui = auto
+[alias]
+	s = status -sb
+	po = pull origin
+	pom = pull origin master
+	fa = fetch --all
+	fap = fetch --all -p
+	ci = commit
+	co = clone

@@ -1,0 +1,10 @@
+# Check if homebrew is installed
+# http://mxcl.github.io/homebrew/
+if [ $(type -t brew) ]; then
+    # Enable bash completion
+    [ -f $(brew --prefix)/etc/bash_completion ] && source $(brew --prefix)/etc/bash_completion;
+    [ -f $(brew --prefix)/etc/bash_completion.d/git-completion.bash ] && source $(brew --prefix)/etc/bash_completion.d/git-completion.bash;
+    [ -f $(brew --prefix)/etc/bash_completion.d/git-prompt.bash ] && source $(brew --prefix)/etc/bash_completion.d/git-prompt.bash;
+    # Add gnutools to $PATH (brew install coreutils)
+    export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+fi

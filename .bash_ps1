@@ -1,0 +1,22 @@
+export PS1="\[\033[38;37m\]\u@\h\[\033[01;34m\] \w"
+
+# Important: make sure you have ran
+# - > brew update
+# - > brew install bash
+# - > brew install git
+# - edit /etc/shells and add /usr/local/bin/bash
+# - chsh to /usr/local/bin/bash
+# - > brew install bash-completion git
+
+if [ $(type -t __git_ps1) ]; then
+    # Shell prompt as shared by Thomas Ferreira
+    # http://coderwall.com/p/fr79pa
+    export GIT_PS1_SHOWDIRTYSTATE=1
+    export GIT_PS1_SHOWUNTRACKEDFILES=1
+    export GIT_PS1_SHOWSTASHSTATE=1
+    export PS1="$PS1\[\033[01;33m\]\$(__git_ps1)\[\033[01;34m\]"
+elif [ $(type -t parse_git_branch) ]; then
+    export PS1="$PS1\[\033[01;33m\]\$(parse_git_branch)\[\033[01;34m\]"
+fi
+
+export PS1="$PS1 \$\[\033[00m\] "
