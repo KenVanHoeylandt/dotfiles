@@ -1,6 +1,8 @@
 [user]
 	name = Ken Van Hoeylandt
 	email = git@kenvanhoeylandt.net
+[core]
+    excludesfile = ~/.gitignore_global
 [color]
 	ui = auto
 [alias]
