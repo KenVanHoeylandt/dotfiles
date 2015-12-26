@@ -1,0 +1,19 @@
+[user]
+	name = Ken Van Hoeylandt
+	email = git@kenvanhoeylandt.net
+[color]
+	ui = auto
+[alias]
+	s = status -sb
+	po = pull origin
+	pom = pull origin master
+	fa = fetch --all
+	fap = fetch --all -p
+	ci = commit
+	co = clone
+[difftool "sourcetree"]
+	cmd = /Applications/p4merge.app/Contents/MacOS/p4merge \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/p4merge.app/Contents/MacOS/p4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+	trustExitCode = true
