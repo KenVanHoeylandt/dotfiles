@@ -22,7 +22,10 @@ dotfiles: verify
 	ln -sfv "dotfiles/bash/bash_profile_osx" ~/.bash_profile_osx
 	ln -sfv "dotfiles/bash/bash_ps1" ~/.bash_ps1
 	ln -sfv "dotfiles/bash/bashrc" ~/.bashrc
-	ln -sfv "dotfiles/slate/slate.js" ~/.slate.js
+
+preferences: verify
+	ln -sfv "dotfiles/preferences/slate/slate.js" ~/.slate.js
+	cp preferences/com.googlecode.iterm2.plist ~/Library/Preferences/
 
 verify:
 	@if [ $(CURDIR) != ${HOME}/dotfiles ]; then \
@@ -36,7 +39,7 @@ osx: verify
 
 install: verify install-no-server install-dev-server
 
-install-no-server: verify dotfiles osx install-base install-terminal install-desktop install-dev-base
+install-no-server: verify dotfiles preferences osx install-base install-terminal install-desktop install-dev-base
 
 install-base:
 	./install/brew.sh
