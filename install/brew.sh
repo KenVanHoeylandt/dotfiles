@@ -7,14 +7,9 @@ fi
 brew update 1>/dev/null
 brew upgrade
 
-# Apps to be installed by homebrew.
-apps=(
-  git
-  jq
-  tree
-  ansible
-)
-brew install "${apps[@]}"
+# Install cask.
+if [ ! -z "$(brew cask --version)" ]; then
+  brew install caskroom/cask/brew-cask
+fi
 
-# Git comes with diff-highlight, but isn't in the PATH
-ln -sf "$(brew --prefix)/share/git-core/contrib/diff-highlight/diff-highlight" /usr/local/bin/diff-highlight
+brew tap caskroom/versions

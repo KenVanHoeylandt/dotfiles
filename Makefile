@@ -1,8 +1,19 @@
-.PHONY: dotfiles osx install
+.PHONY: help
 
-default: dotfiles osx install
+default: help
+
+help:
+	@echo Usage: make [target]
+	@echo
+	@echo Targets:
+	@echo "\tdotfiles - link dotfiles"
+	@echo "\tosx - apply OS X settings"
+	@echo "\tinstall - everything"
+	@echo "\tinstall-no-server - everything except server packages"
+	@echo
 
 dotfiles:
+	curl -o ~/.git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
 	ln -sfv "dotfiles/git/gitconfig" ~/.gitconfig
 	ln -sfv "dotfiles/git/gitignore_global" ~/.gitignore_global
 	ln -sfv "dotfiles/bash/bash_aliases" ~/.bash_aliases
@@ -13,15 +24,25 @@ dotfiles:
 	ln -sfv "dotfiles/bash/bashrc" ~/.bashrc
 	ln -sfv "dotfiles/slate/slate.js" ~/.slate.js
 
-	ln -sfv $(HOME)/dotfiles/sublime/Preferences.sublime-settings $(HOME)/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Preferences.sublime-settings
-
 osx:
 	./osx/defaults.sh
 	./osx/timemachine.sh
 
-install:
-	./install/brew.sh
-	./install/brew-cask.sh
+install: install-no-server install-dev-server
 
-vagrantplugins:
-	./install/vagrantplugins.sh
+install-no-server: dotfiles osx install-base install-terminal install-desktop install-dev-base
+
+install-base:
+		./install/brew.sh
+
+install-terminal:
+	./install/terminal.sh
+
+install-desktop:
+	./install/desktop.sh
+
+install-dev-base:
+	./install/dev-base.sh
+
+install-dev-server:
+	./install/dev-server.sh

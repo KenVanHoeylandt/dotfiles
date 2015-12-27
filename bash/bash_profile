@@ -19,3 +19,5 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 
 # Enable local override
 [ -f ~/.bash_profile_local ] && . ~/.bash_profile_local
+
+source ~/.git-prompt.sh
