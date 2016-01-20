@@ -1,7 +1,7 @@
 # External files
 [ -f ~/.bash_aliases ] && . ~/.bash_aliases
 [ -f ~/.bash_functions ] && . ~/.bash_functions
-[ -f ~/.bash_functions ] && . ~/.bash_ps1
+[ -f ~/.bash_ps1 ] && . ~/.bash_ps1
 
 # OS specific files
 [ $(uname -s) == "Darwin" ] && source ~/.bash_profile_osx
