@@ -4,7 +4,7 @@
 [ -f ~/.bash_ps1 ] && . ~/.bash_ps1
 
 # OS specific files
-[ $(uname -s) == "Darwin" ] && source ~/.bash_profile_osx
+[ $(uname -s) == "Darwin" ] && source ~/.bash_profile_mac
 
 # Paths
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin
@@ -20,4 +20,5 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 # Enable local override
 [ -f ~/.bash_profile_local ] && . ~/.bash_profile_local
 
-source ~/.git-prompt.sh
+# Git
+[ -f ~/.git-prompt.sh ] && . ~/.git-prompt.sh

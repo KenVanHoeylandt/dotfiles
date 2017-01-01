@@ -5,53 +5,45 @@ default: help
 help:
 	@echo Usage: make [target]
 	@echo
-	@echo Targets:
-	@echo "\tdotfiles - link dotfiles"
-	@echo "\tosx - apply OS X settings"
-	@echo "\tinstall - everything"
-	@echo "\tinstall-no-server - everything except server packages"
+	@echo Main targets:
+	@echo "\tmac\t\tapply everything on macOS"
 	@echo
+	@echo Intermediate targets:
+	@echo "\tbash\t\tlink bash profile"
+	@echo "\tgit\t\tlink git profile"
+	@echo "\tmacSettings\tapply macOS settings"
 
-dotfiles: verify
-	curl -o ~/.git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
-	ln -sfv "dotfiles/git/gitconfig" ~/.gitconfig
-	ln -sfv "dotfiles/git/gitignore_global" ~/.gitignore_global
-	ln -sfv "dotfiles/bash/bash_aliases" ~/.bash_aliases
-	ln -sfv "dotfiles/bash/bash_functions" ~/.bash_functions
-	ln -sfv "dotfiles/bash/bash_profile" ~/.bash_profile
-	ln -sfv "dotfiles/bash/bash_profile_osx" ~/.bash_profile_osx
-	ln -sfv "dotfiles/bash/bash_ps1" ~/.bash_ps1
-	ln -sfv "dotfiles/bash/bashrc" ~/.bashrc
+bash:
+	ln -sfv "${CURDIR}/applications/bash/bash_aliases" ~/.bash_aliases
+	ln -sfv "${CURDIR}/applications/bash/bash_functions" ~/.bash_functions
+	ln -sfv "${CURDIR}/applications/bash/bash_profile" ~/.bash_profile
+	ln -sfv "${CURDIR}/applications/bash/bash_profile_mac" ~/.bash_profile_mac
+	ln -sfv "${CURDIR}/applications/bash/bash_ps1" ~/.bash_ps1
+	ln -sfv "${CURDIR}/applications/bash/bashrc" ~/.bashrc
 
-preferences: verify
-	ln -sfv "dotfiles/preferences/slate/slate.js" ~/.slate.js
-	cp preferences/com.googlecode.iterm2.plist ~/Library/Preferences/
+git:
+	ln -sfv "${CURDIR}/applications/git/git-prompt.sh" ~/.git-prompt.sh
+	ln -sfv "${CURDIR}/applications/git/gitconfig" ~/.gitconfig
+	ln -sfv "${CURDIR}/applications/git/gitignore_global" ~/.gitignore_global
 
-verify:
-	@if [ $(CURDIR) != ${HOME}/dotfiles ]; then \
-		echo "Error: dotfiles repository is located at ${CURDIR}, but should be at ${HOME}/dotfiles"; \
-		exit 2; \
-	fi
+macSettings:
+	# Preferences
+	ln -sfv "${CURDIR}/mac/preferences/slate/slate.js" ~/.slate.js
+	cp mac/preferences/com.googlecode.iterm2.plist ~/Library/Preferences/
+	# Expand save panel by default
+	defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+	# Time Machine exclusions
+	sudo tmutil addexclusion ~/Downloads
+	sudo tmutil addexclusion ~/Library/Application\ Support/Steam/steamapps/
+	sudo tmutil addexclusion ~/Movies
+	sudo tmutil addexclusion ~/VirtualBox\ VMs
+	sudo tmutil addexclusion /opt/homebrew-cask
+	sudo tmutil addexclusion /Library/Caches/Homebrew
+	sudo tmutil addexclusion /usr/local/Cellar/
 
-osx: verify
-	./osx/defaults.sh
-	./osx/timemachine.sh
+macShortcuts:
+	if [ ! -a /usr/local/bin ]; then sudo mkdir -p /usr/local/bin; fi;
+	if [ ! -a /usr/local/bin/subl ]; then sudo ln -sfv "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl; fi;
 
-install: verify install-no-server install-dev-server
-
-install-no-server: verify dotfiles preferences osx install-base install-terminal install-desktop install-dev-base
-
-install-base:
-	./install/brew.sh
-
-install-terminal:
-	./install/terminal.sh
-
-install-desktop:
-	./install/desktop.sh
-
-install-dev-base:
-	./install/dev-base.sh
-
-install-dev-server:
-	./install/dev-server.sh
+mac: macSettings macShortcuts git dotfiles
+	# Nothing
