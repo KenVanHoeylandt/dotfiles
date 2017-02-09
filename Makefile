@@ -44,6 +44,7 @@ macSettings:
 macShortcuts:
 	if [ ! -a /usr/local/bin ]; then sudo mkdir -p /usr/local/bin; fi;
 	if [ ! -a /usr/local/bin/subl ]; then sudo ln -sfv "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl; fi;
+	ln -sfv "${CURDIR}/mac/preferences/sublime/Preferences.sublime-settings" "${HOME}/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings"
 
 mac: macSettings macShortcuts git dotfiles
 	# Nothing
