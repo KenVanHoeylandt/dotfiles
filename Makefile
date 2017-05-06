@@ -19,8 +19,7 @@ bash:
 
 zsh:
 	echo DOTFILES=`pwd` > ~/.dotfiles
-	echo Add the following line to .zshrc:
-	echo 	'source ~/.dotfiles && source $$DOTFILES/applications/zsh/config'
+	ln -sfv "${CURDIR}/applications/zsh/zshrc" ~/.zshrc
 
 git:
 	ln -sfv "${CURDIR}/applications/git/git-prompt.sh" ~/.git-prompt.sh
