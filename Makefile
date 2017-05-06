@@ -14,12 +14,13 @@ help:
 	@echo "\tmacSettings\tapply macOS settings"
 
 bash:
-	ln -sfv "${CURDIR}/applications/bash/bash_aliases" ~/.bash_aliases
-	ln -sfv "${CURDIR}/applications/bash/bash_functions" ~/.bash_functions
-	ln -sfv "${CURDIR}/applications/bash/bash_profile" ~/.bash_profile
-	ln -sfv "${CURDIR}/applications/bash/bash_profile_mac" ~/.bash_profile_mac
-	ln -sfv "${CURDIR}/applications/bash/bash_ps1" ~/.bash_ps1
+	echo DOTFILES=`pwd` > ~/.dotfiles
 	ln -sfv "${CURDIR}/applications/bash/bashrc" ~/.bashrc
+
+zsh:
+	echo DOTFILES=`pwd` > ~/.dotfiles
+	echo Add the following line to .zshrc:
+	echo 	'source ~/.dotfiles && source $$DOTFILES/applications/zsh/config'
 
 git:
 	ln -sfv "${CURDIR}/applications/git/git-prompt.sh" ~/.git-prompt.sh
@@ -46,5 +47,5 @@ macShortcuts:
 	if [ ! -a /usr/local/bin/subl ]; then sudo ln -sfv "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl; fi;
 	ln -sfv "${CURDIR}/mac/preferences/sublime/Preferences.sublime-settings" "${HOME}/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings"
 
-mac: macSettings macShortcuts git dotfiles
+mac: dotfiles macSettings macShortcuts git dotfiles
 	# Nothing

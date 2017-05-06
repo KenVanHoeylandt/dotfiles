@@ -2,7 +2,7 @@
 	name = Ken Van Hoeylandt
 	email = git@kenvanhoeylandt.net
 [core]
-	excludesfile = /Users/Ken/.gitignore_global
+	excludesfile = /Users/ken/.gitignore_global
 [color]
 	ui = auto
 [alias]
@@ -21,3 +21,5 @@
 	trustExitCode = true
 [push]
 	default = simple
+[commit]
+	template = /Users/ken/.stCommitMsg
