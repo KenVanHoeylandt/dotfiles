@@ -14,7 +14,7 @@ export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
 # Enable local override
-[ -f ~./bash_profile_local ] && . ~/.bash_profile_local
+[ -f ~/.bash_profile_local ] && . ~/.bash_profile_local
 
 # Git
 [ -f $DOTFILES/applications/git/git-prompt.sh ] && . $DOTFILES/applications/git/git-prompt.sh
