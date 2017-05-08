@@ -16,6 +16,7 @@ help:
 bash:
 	echo DOTFILES=`pwd` > ~/.dotfiles
 	ln -sfv "${CURDIR}/applications/bash/bashrc" ~/.bashrc
+	ln -sfv "${CURDIR}/applications/bash/bashrc" ~/.bash_profile
 
 zsh:
 	echo DOTFILES=`pwd` > ~/.dotfiles
