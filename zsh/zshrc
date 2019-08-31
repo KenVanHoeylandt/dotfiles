@@ -28,4 +28,4 @@ source $ZSH/oh-my-zsh.sh
 
 # Dotfiles
 source ~/.dotfiles
-source $DOTFILES/applications/zsh/config
+source $DOTFILES/zsh/config

@@ -8,3 +8,7 @@ if [ $(type -t brew) ]; then
     # Add gnutools to $PATH (brew install coreutils)
     export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 fi
+
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+

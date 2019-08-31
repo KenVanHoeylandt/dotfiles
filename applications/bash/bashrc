@@ -1,2 +1,0 @@
-[ -n "$PS1" ] && source ~/.dotfiles
-[ -n "$PS1" ] && source $DOTFILES/applications/bash/profile

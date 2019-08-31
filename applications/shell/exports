@@ -1,4 +1,0 @@
-export PATH=$PATH:/usr/local/bin:/usr/local/sbin
-export EDITOR="nano"
-export GREP_OPTIONS='--color=auto'
-export LANG=en_UK.UTF-8

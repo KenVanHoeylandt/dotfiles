@@ -1,0 +1,16 @@
+# Main includers
+[ -n "$PS1" ] && source ~/.dotfiles
+
+# External files
+[ -f $DOTFILES/shell/aliases ] && . $DOTFILES/shell/aliases
+[ -f $DOTFILES/shell/exports ] && . $DOTFILES/shell/exports
+
+# Various settings
+export HISTCONTROL=ignoreboth
+export HISTIGNORE="ls:ll:la:cd:..:cd ..:pwd:"
+
+# macOS custom
+[ $(uname -s) == "Darwin" ] && source $DOTFILES/bash/profile_mac
+
+# Local overrides
+[ -f ~/.bash_profile_local ] && . ~/.bash_profile_local
