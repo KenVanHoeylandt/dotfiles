@@ -4,3 +4,4 @@ alias s='ssh'
 alias ..='cd ..'
 alias g=git
 alias gw=./gradlew
+alias fd=fdfind
