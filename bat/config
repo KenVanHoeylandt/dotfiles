@@ -1,0 +1,5 @@
+--theme="OneHalfDark"
+
+# Don't show grid
+--style="numbers,changes"
+

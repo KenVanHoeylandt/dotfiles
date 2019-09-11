@@ -14,4 +14,5 @@ install git
 [ $(uname -s) == "Darwin" ] && install mac
 install zsh
 install vim
+install bat
 
