@@ -10,7 +10,7 @@ export HISTCONTROL=ignoreboth
 export HISTIGNORE="ls:ll:la:cd:..:cd ..:pwd:"
 
 # macOS custom
-[ $(uname -s) == "Darwin" ] && source $DOTFILES/bash/profile_mac
+[ $(uname -s) = "Darwin" ] && source $DOTFILES/bash/profile_mac
 
 # Local overrides
 [ -f ~/.bash_profile_local ] && . ~/.bash_profile_local

@@ -11,7 +11,7 @@ function install() {
 # Install
 install bash
 install git
-[ $(uname -s) == "Darwin" ] && install mac
+[ $(uname -s) = "Darwin" ] && install mac
 install zsh
 install vim
 install bat
