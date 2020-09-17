@@ -14,10 +14,8 @@
  org-bullets-bullet-list '("·")
  org-directory "~/org/"
  display-line-numbers-type `relative
- display-time-24hr-format t
 )
 
 (map! :ne "M-/" #'comment-or-uncomment-region)
 
 (nyan-mode +1)
-
