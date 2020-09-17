@@ -15,4 +15,4 @@ install git
 install zsh
 install vim
 install bat
-
+install doom-emacs
