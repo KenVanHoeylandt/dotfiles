@@ -29,3 +29,4 @@ source $ZSH/oh-my-zsh.sh
 # Dotfiles
 source ~/.dotfiles
 source $DOTFILES/zsh/config
+source ~/.bash_profile_local
