@@ -182,3 +182,5 @@
        :config
        ;;literate
        (default +bindings +smartparens))
+
+(desktop-save-mode 1)
